@@ -1,0 +1,5 @@
+[console_scripts]
+pub1 = sauron.talker1:main
+pub2 = sauron.talker2:main
+sub = sauron.listener:main
+
