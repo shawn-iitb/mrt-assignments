@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<robot name="robowobo">
+
+    <material name="robo_mat">
+        <color rgba="0.3 0.5 0.7 1"/>
+    </material>
+    <material name="cam_mat">
+        <color rgba="0.9 0.9 0.9 1"/>
+    </material>
+    <material name="wheel_mat">
+        <color rgba="0.2 0.2 0.2 1"/>
+    </material>
+    <material name="stick_mat">
+        <color rgba="0.8 0.2 0.2 1"/>
+    </material>
+
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <cylinder radius="0.1" length="0.6"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <material name="robo_mat"/>
+        </visual>
+    </link>
+
+    <link name="head_link">
+        <visual>
+            <geometry>
+                <sphere radius="0.1"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <material name="robo_mat"/>
+        </visual>
+    </link>
+
+    <joint name="head_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="head_link"/>
+        <origin xyz="0 0 0.4" rpy="0 0 0"/>
+    </joint>
+
+    <link name="cam_link">
+        <visual>
+            <geometry>
+                <cylinder radius="0.02" length="0.01"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 1.57 0"/>
+            <material name="cam_mat"/>
+        </visual>
+    </link>
+
+    <joint name="cam_joint" type="fixed">
+        <parent link="head_link"/>
+        <child link="cam_link"/>
+        <origin xyz="0.11 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="wheelC_link">
+        <visual>
+            <geometry>
+                <box size="0.4 0.4 0.05"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <material name="robo_mat"/>
+        </visual>
+    </link>
+
+    <joint name="wheelC_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="wheelC_link"/>
+        <origin xyz="0 0 -0.325" rpy="0 0 0"/>
+    </joint>
+
+    <link name="wheelFL_link">
+        <visual>
+            <geometry>
+                <cylinder radius="0.05" length="0.01"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <material name="wheel_mat"/>
+        </visual>
+    </link>
+
+    <joint name="wheelFL_joint" type="continuous">
+        <parent link="wheelC_link"/>
+        <child link="wheelFL_link"/>
+        <origin xyz="0.1 0.205 0" rpy="0 0 0"/>
+        <axis xyz="0.0 1 0.0"/>
+    </joint>
+
+    <link name="wheelFR_link">
+        <visual>
+            <geometry>
+                <cylinder radius="0.05" length="0.01"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <material name="wheel_mat"/>
+        </visual>
+    </link>
+
+    <joint name="wheelFR_joint" type="continuous">
+        <parent link="wheelC_link"/>
+        <child link="wheelFR_link"/>
+        <origin xyz="0.1 -0.205 0" rpy="0 0 0"/>
+        <axis xyz="0.0 1 0.0"/>
+    </joint>
+
+    <link name="wheelBL_link">
+        <visual>
+            <geometry>
+                <cylinder radius="0.05" length="0.01"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <material name="wheel_mat"/>
+        </visual>
+    </link>
+
+    <joint name="wheelBL_joint" type="continuous">
+        <parent link="wheelC_link"/>
+        <child link="wheelBL_link"/>
+        <origin xyz="-0.1 0.205 0" rpy="0 0 0"/>
+        <axis xyz="0.0 1 0.0"/>
+    </joint>
+
+    <link name="wheelBR_link">
+        <visual>
+            <geometry>
+                <cylinder radius="0.05" length="0.01"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <material name="wheel_mat"/>
+        </visual>
+    </link>
+
+    <joint name="wheelBR_joint" type="continuous">
+        <parent link="wheelC_link"/>
+        <child link="wheelBR_link"/>
+        <origin xyz="-0.1 -0.205 0" rpy="0 0 0"/>
+        <axis xyz="0.0 1 0.0"/>
+    </joint>
+
+    <link name="hand_link">
+        <visual>
+            <geometry>
+                <cylinder radius="0.01" length="0.2"/>
+            </geometry>
+            <origin xyz="0 0 0.1" rpy="0 0 0"/>
+            <material name="robo_mat"/>
+        </visual>
+    </link>
+
+    <joint name="hand_joint" type="revolute">
+        <parent link="base_link"/>
+        <child link="hand_link"/>
+        <origin xyz="0.11 0 0.1" rpy="0 0 0"/>
+        <axis xyz="0.0 1 0.0"/>
+        <limit lower="0.0" upper="3.14" effort="1.0" velocity="1.0"/>
+    </joint>
+
+    <link name="stick_link">
+        <visual>
+            <geometry>
+                <cylinder radius="0.01" length="0.2"/>
+            </geometry>
+            <origin xyz="0 0 0.1" rpy="0 0 0"/>
+            <material name="stick_mat"/>
+        </visual>
+    </link>
+
+    <joint name="stick_joint" type="prismatic">
+        <parent link="hand_link"/>
+        <child link="stick_link"/>
+        <origin xyz="0 0.02 0.05" rpy="0 0 0"/>
+        <axis xyz="0.0 0 1"/>
+        <limit lower="0.0" upper="0.15" effort="1.0" velocity="1.0"/>
+    </joint>
+
+    
+
+</robot>
