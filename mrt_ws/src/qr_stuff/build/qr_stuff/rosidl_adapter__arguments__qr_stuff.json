@@ -1,0 +1,8 @@
+{
+  "package_name": "qr_stuff",
+  "non_idl_tuples": [
+    "/home/shawn/Work/iitb/mrt/ros/mrt_ws/src/qr_stuff:msg/Num.msg",
+    "/home/shawn/Work/iitb/mrt/ros/mrt_ws/src/qr_stuff:msg/Sphere.msg",
+    "/home/shawn/Work/iitb/mrt/ros/mrt_ws/src/qr_stuff:srv/AddThreeInts.srv"
+  ]
+}

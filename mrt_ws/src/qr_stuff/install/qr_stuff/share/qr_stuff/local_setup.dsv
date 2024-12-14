@@ -1,0 +1,4 @@
+source;share/qr_stuff/environment/ament_prefix_path.sh
+source;share/qr_stuff/environment/library_path.sh
+source;share/qr_stuff/environment/path.sh
+source;share/qr_stuff/environment/pythonpath.sh

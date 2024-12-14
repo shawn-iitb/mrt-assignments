@@ -1,0 +1,3 @@
+sensor_msgs/Image raw_image
+ArucoData aruco_data
+---
